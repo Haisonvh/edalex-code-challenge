@@ -6,6 +6,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class MessageModel implements Serializable {
@@ -16,6 +20,9 @@ public class MessageModel implements Serializable {
     private Long id;
     
     @Column(nullable = false)
+    @NotBlank(message = "Message must have length from 1 to 250")
+    @Pattern(regexp = "^[a-zA-Z\\s\\.,;!?0-9]*$",message = "Message should not contain special character")
+    @Length(max = 250,message = "Message must have length from 1 to 250")
     private String message;
 
     public MessageModel() {

@@ -20,7 +20,7 @@ public class MessageNotFoundAdvice {
   @ResponseBody
   @ExceptionHandler(MessageNotFoundException.class)
   @ResponseStatus(HttpStatus.NOT_FOUND)
-  String employeeNotFoundHandler(MessageNotFoundException ex) {
+  String messageNotFoundHandler(MessageNotFoundException ex) {
     return ex.getMessage();
   }
 }
